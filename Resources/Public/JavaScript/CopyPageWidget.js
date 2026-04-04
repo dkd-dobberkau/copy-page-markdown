@@ -176,27 +176,13 @@
     }
 
     /**
-     * Copy Markdown, then open Claude.
+     * Open Claude with a prompt that references the Markdown URL.
+     * Uses the ?q= query parameter supported by claude.ai/new.
      */
-    async function doOpenInClaude(mdUrl, claudeUrl, trigger, label) {
-        const original = label.textContent;
-
-        try {
-            const res = await fetch(mdUrl, {
-                headers: { 'Accept': 'text/markdown' },
-            });
-
-            if (res.ok) {
-                const md = await res.text();
-                await navigator.clipboard.writeText(md);
-                showSuccess(trigger, label, 'Copied! Opening Claude\u2026', original);
-            }
-        } catch (err) {
-            console.error('[CopyPageMarkdown]', err);
-        }
-
-        // Open Claude regardless
-        window.open(claudeUrl, '_blank', 'noopener');
+    function doOpenInClaude(mdUrl, claudeUrl, trigger, label) {
+        const prompt = 'Read from ' + mdUrl + ' so I can ask questions about it.';
+        const url = claudeUrl + '?q=' + encodeURIComponent(prompt);
+        window.open(url, '_blank', 'noopener');
     }
 
     function showSuccess(trigger, label, msg, original, isError) {

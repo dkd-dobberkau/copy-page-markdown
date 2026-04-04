@@ -1,5 +1,5 @@
 {
-    "name": "dkd/copy-page-markdown",
+    "name": "dkd-dobberkau/copy-page-markdown",
     "type": "typo3-cms-extension",
     "description": "Frontend widget that lets visitors copy any TYPO3 page as Markdown for LLMs. Builds on b13/ai-bots-love-markdown for the Markdown endpoint.",
     "license": "GPL-2.0-or-later",
