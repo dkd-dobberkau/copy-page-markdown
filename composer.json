@@ -1,0 +1,29 @@
+{
+    "name": "dkd/copy-page-markdown",
+    "type": "typo3-cms-extension",
+    "description": "Frontend widget that lets visitors copy any TYPO3 page as Markdown for LLMs. Builds on b13/ai-bots-love-markdown for the Markdown endpoint.",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "dkd Internet Service GmbH",
+            "email": "info@dkd.de",
+            "homepage": "https://www.dkd.de"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "typo3/cms-core": "^13.4 || ^14.0",
+        "typo3/cms-frontend": "^13.4 || ^14.0",
+        "b13/ai-bots-love-markdown": "^0.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dkd\\CopyPageMarkdown\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "copy_page_markdown"
+        }
+    }
+}

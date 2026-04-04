@@ -1,0 +1,34 @@
+settings:
+  copyPageMarkdown:
+    enabled:
+      type: bool
+      default: true
+      label: 'Enable Copy Page widget'
+      description: 'Show the floating copy-as-markdown widget on frontend pages.'
+
+    position:
+      type: string
+      default: 'bottom-right'
+      label: 'Widget position'
+      description: 'Floating position: bottom-right, bottom-left, top-right, top-left'
+
+    showViewMarkdown:
+      type: bool
+      default: true
+      label: 'Show "View as Markdown" option'
+
+    showOpenInClaude:
+      type: bool
+      default: true
+      label: 'Show "Open in Claude" option'
+
+    claudeBaseUrl:
+      type: string
+      default: 'https://claude.ai/new'
+      label: 'Claude base URL'
+
+    markdownSuffix:
+      type: string
+      default: '/ai-bots-love.md'
+      label: 'Markdown URL suffix'
+      description: 'The suffix used by b13/ai-bots-love-markdown. Change only if you customized the b13 extension.'

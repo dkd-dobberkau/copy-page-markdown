@@ -1,0 +1,8 @@
+copyPageMarkdown {
+    enabled = 1
+    position = bottom-right
+    showViewMarkdown = 1
+    showOpenInClaude = 1
+    claudeBaseUrl = https://claude.ai/new
+    markdownSuffix = /ai-bots-love.md
+}

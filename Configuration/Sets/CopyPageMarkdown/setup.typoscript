@@ -1,0 +1,28 @@
+page {
+    includeCSS {
+        copyPageMarkdown = EXT:copy_page_markdown/Resources/Public/Css/CopyPageWidget.css
+        copyPageMarkdown.if.isTrue = {$copyPageMarkdown.enabled}
+    }
+
+    includeJSFooter {
+        copyPageMarkdown = EXT:copy_page_markdown/Resources/Public/JavaScript/CopyPageWidget.js
+        copyPageMarkdown.if.isTrue = {$copyPageMarkdown.enabled}
+    }
+
+    # Inject the widget container before </body>
+    footerData {
+        1736 = TEXT
+        1736.value (
+<div id="cpm-widget"
+     class="cpm-widget"
+     data-position="{$copyPageMarkdown.position}"
+     data-show-view="{$copyPageMarkdown.showViewMarkdown}"
+     data-show-claude="{$copyPageMarkdown.showOpenInClaude}"
+     data-claude-url="{$copyPageMarkdown.claudeBaseUrl}"
+     data-md-suffix="{$copyPageMarkdown.markdownSuffix}"
+     aria-label="Copy page as Markdown">
+</div>
+)
+        1736.if.isTrue = {$copyPageMarkdown.enabled}
+    }
+}

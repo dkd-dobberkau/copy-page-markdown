@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="messages" date="2026-04-03T00:00:00Z" product-name="copy_page_markdown">
+        <header/>
+        <body>
+            <trans-unit id="widget.title" resname="widget.title">
+                <source>Copy page as Markdown for LLMs</source>
+            </trans-unit>
+            <trans-unit id="widget.copy" resname="widget.copy">
+                <source>Copy page</source>
+            </trans-unit>
+            <trans-unit id="widget.copy.desc" resname="widget.copy.desc">
+                <source>Copy page as Markdown for LLMs</source>
+            </trans-unit>
+            <trans-unit id="widget.view" resname="widget.view">
+                <source>View as Markdown</source>
+            </trans-unit>
+            <trans-unit id="widget.view.desc" resname="widget.view.desc">
+                <source>View this page as plain text</source>
+            </trans-unit>
+            <trans-unit id="widget.claude" resname="widget.claude">
+                <source>Open in Claude</source>
+            </trans-unit>
+            <trans-unit id="widget.claude.desc" resname="widget.claude.desc">
+                <source>Ask questions about this page</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,187 @@
+/**
+ * Copy Page as Markdown Widget
+ *
+ * Floating dropdown inspired by Claude Code Docs "Copy page" button.
+ * Uses b13/ai-bots-love-markdown as Markdown backend.
+ */
+
+.cpm-widget {
+    --cpm-bg: #ffffff;
+    --cpm-border: #e5e7eb;
+    --cpm-text: #1f2937;
+    --cpm-muted: #6b7280;
+    --cpm-hover: #f9fafb;
+    --cpm-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+    --cpm-radius: 10px;
+    --cpm-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto, sans-serif;
+    --cpm-success-bg: #ecfdf5;
+    --cpm-success-border: #6ee7b7;
+    --cpm-success-text: #065f46;
+
+    position: fixed;
+    z-index: 9999;
+    font-family: var(--cpm-font);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--cpm-text);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Positions */
+.cpm-widget[data-position="bottom-right"] { bottom: 24px; right: 24px; }
+.cpm-widget[data-position="bottom-left"]  { bottom: 24px; left: 24px; }
+.cpm-widget[data-position="top-right"]    { top: 24px; right: 24px; }
+.cpm-widget[data-position="top-left"]     { top: 24px; left: 24px; }
+
+/* Trigger */
+.cpm-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    background: var(--cpm-bg);
+    border: 1px solid var(--cpm-border);
+    border-radius: var(--cpm-radius);
+    cursor: pointer;
+    color: var(--cpm-text);
+    font-size: 13px;
+    font-family: inherit;
+    box-shadow: var(--cpm-shadow);
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.cpm-trigger:hover {
+    background: var(--cpm-hover);
+    border-color: #d1d5db;
+}
+
+.cpm-trigger[aria-expanded="true"] .cpm-chevron {
+    transform: rotate(180deg);
+}
+
+.cpm-trigger--copied {
+    background: var(--cpm-success-bg) !important;
+    border-color: var(--cpm-success-border) !important;
+    color: var(--cpm-success-text) !important;
+}
+
+.cpm-chevron {
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.cpm-icon {
+    flex-shrink: 0;
+}
+
+/* Dropdown */
+.cpm-dropdown {
+    position: absolute;
+    min-width: 272px;
+    background: var(--cpm-bg);
+    border: 1px solid var(--cpm-border);
+    border-radius: var(--cpm-radius);
+    box-shadow: var(--cpm-shadow);
+    padding: 4px;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: none;
+}
+
+.cpm-dropdown--visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Dropdown positioning per widget position */
+.cpm-widget[data-position="bottom-right"] .cpm-dropdown,
+.cpm-widget[data-position="bottom-left"] .cpm-dropdown {
+    bottom: calc(100% + 8px);
+}
+
+.cpm-widget[data-position="top-right"] .cpm-dropdown,
+.cpm-widget[data-position="top-left"] .cpm-dropdown {
+    top: calc(100% + 8px);
+}
+
+.cpm-widget[data-position="bottom-right"] .cpm-dropdown,
+.cpm-widget[data-position="top-right"] .cpm-dropdown {
+    right: 0;
+}
+
+.cpm-widget[data-position="bottom-left"] .cpm-dropdown,
+.cpm-widget[data-position="top-left"] .cpm-dropdown {
+    left: 0;
+}
+
+/* Option buttons */
+.cpm-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    background: none;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--cpm-text);
+    transition: background 0.1s;
+}
+
+.cpm-option:hover {
+    background: var(--cpm-hover);
+}
+
+.cpm-option svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: var(--cpm-muted);
+}
+
+.cpm-option__title {
+    font-weight: 600;
+    display: block;
+}
+
+.cpm-option__desc {
+    color: var(--cpm-muted);
+    font-size: 12px;
+    display: block;
+    margin-top: 1px;
+}
+
+/* Separator */
+.cpm-sep {
+    height: 1px;
+    background: var(--cpm-border);
+    margin: 4px 8px;
+}
+
+/* Responsive: collapse label on small screens */
+@media (max-width: 480px) {
+    .cpm-label { display: none; }
+    .cpm-dropdown { min-width: 240px; }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .cpm-widget {
+        --cpm-bg: #1f2937;
+        --cpm-border: #374151;
+        --cpm-text: #f9fafb;
+        --cpm-muted: #9ca3af;
+        --cpm-hover: #374151;
+        --cpm-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        --cpm-success-bg: #064e3b;
+        --cpm-success-border: #059669;
+        --cpm-success-text: #d1fae5;
+    }
+}

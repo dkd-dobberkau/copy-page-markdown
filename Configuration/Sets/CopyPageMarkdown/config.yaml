@@ -1,0 +1,4 @@
+name: dkd/copy-page-markdown
+label: Copy Page as Markdown Widget
+dependencies:
+  - b13/ai-bots-love-markdown
