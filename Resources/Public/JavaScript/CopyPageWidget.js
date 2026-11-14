@@ -2,7 +2,7 @@
  * Copy Page as Markdown Widget
  *
  * Renders a floating dropdown with three actions:
- *   1. Copy page — fetches Markdown from b13/ai-bots-love-markdown endpoint, copies to clipboard
+ *   1. Copy for your agent — fetches Markdown from b13/ai-bots-love-markdown endpoint, copies to clipboard
  *   2. View as Markdown — opens the .md URL in a new tab
  *   3. Open in Claude — copies Markdown, then opens Claude
  *
@@ -82,10 +82,16 @@
 
     /**
      * Construct the Markdown URL.
-     * b13 uses the pattern: {pageUrl}/ai-bots-love.md
-     * We take the current pathname, ensure no trailing slash duplication.
+     * The page names it in <link rel="alternate" type="text/markdown">, which
+     * b13/ai-bots-love-markdown adds; that also covers sites with their own
+     * URL scheme (/page.md). Without the tag, fall back to the b13 pattern
+     * {pageUrl}/ai-bots-love.md.
      */
     function buildMarkdownUrl(suffix) {
+        const alternate = document.querySelector('link[rel="alternate"][type="text/markdown"]');
+        if (alternate && alternate.href) {
+            return alternate.href;
+        }
         const loc = window.location;
         let path = loc.pathname;
         // Remove trailing slash if suffix starts with /
@@ -98,8 +104,8 @@
     function buildWidgetHtml(config) {
         let options = '';
 
-        // Copy page — always shown
-        options += buildOption('copy', ICONS.copy, 'Copy page', 'Copy page as Markdown for LLMs');
+        // Copy for your agent — always shown
+        options += buildOption('copy', ICONS.copy, 'Copy for your agent', 'Copy this page as Markdown for an AI agent');
 
         // View as Markdown
         if (config.showView) {
@@ -114,9 +120,9 @@
         }
 
         return `
-            <button class="cpm-trigger" aria-expanded="false" aria-haspopup="true" title="Copy page as Markdown for LLMs">
+            <button class="cpm-trigger" aria-expanded="false" aria-haspopup="true" title="Copy this page as Markdown for an AI agent">
                 ${ICONS.copy}
-                <span class="cpm-label">Copy page</span>
+                <span class="cpm-label">Copy for your agent</span>
                 ${ICONS.chevron}
             </button>
             <div class="cpm-dropdown" role="menu">

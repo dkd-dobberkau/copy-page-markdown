@@ -4,16 +4,16 @@
         <header/>
         <body>
             <trans-unit id="widget.title" resname="widget.title">
-                <source>Copy page as Markdown for LLMs</source>
-                <target>Seite als Markdown für LLMs kopieren</target>
+                <source>Copy this page as Markdown for an AI agent</source>
+                <target>Diese Seite als Markdown für einen KI-Agenten kopieren</target>
             </trans-unit>
             <trans-unit id="widget.copy" resname="widget.copy">
-                <source>Copy page</source>
-                <target>Seite kopieren</target>
+                <source>Copy for your agent</source>
+                <target>Für deinen Agenten kopieren</target>
             </trans-unit>
             <trans-unit id="widget.copy.desc" resname="widget.copy.desc">
-                <source>Copy page as Markdown for LLMs</source>
-                <target>Seite als Markdown für LLMs kopieren</target>
+                <source>Copy this page as Markdown for an AI agent</source>
+                <target>Diese Seite als Markdown für einen KI-Agenten kopieren</target>
             </trans-unit>
             <trans-unit id="widget.view" resname="widget.view">
                 <source>View as Markdown</source>

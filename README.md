@@ -8,7 +8,7 @@ Uses [b13/ai-bots-love-markdown](https://github.com/b13/ai-bots-love-markdown) a
 
 Three actions in a compact floating dropdown:
 
-- **Copy page** — Fetches the page as Markdown from the b13 endpoint and copies it to clipboard
+- **Copy for your agent** — Fetches the page as Markdown from the b13 endpoint and copies it to clipboard
 - **View as Markdown** — Opens the `.md` URL in a new tab
 - **Open in Claude** — Copies the Markdown, then opens Claude in a new tab so the user can paste and ask questions
 
@@ -18,7 +18,7 @@ Zero editorial overhead. No new backend fields. No maintenance. Just a button.
 
 - TYPO3 v13.4+ or v14
 - PHP 8.2+
-- `b13/ai-bots-love-markdown` ^0.2 (installed as dependency)
+- `b13/ai-bots-love-markdown` ^0.6 (installed as dependency)
 
 ## Installation
 
@@ -56,7 +56,7 @@ All settings under **Site Management → Settings**:
 | `showViewMarkdown` | `true` | Show "View as Markdown" option |
 | `showOpenInClaude` | `true` | Show "Open in Claude" option |
 | `claudeBaseUrl` | `https://claude.ai/new` | URL for the Claude deeplink |
-| `markdownSuffix` | `/ai-bots-love.md` | URL suffix used by b13's extension |
+| `markdownSuffix` | `/ai-bots-love.md` | Fallback URL suffix; the widget prefers the URL in the page's `<link rel="alternate" type="text/markdown">` |
 
 ## How it works
 
